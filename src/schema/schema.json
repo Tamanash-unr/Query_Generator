@@ -1,0 +1,135 @@
+{
+    "Applicant":[
+        {
+            "key": "applicant.gender",
+            "label": "Gender",
+            "type": "multi_select",
+            "options": ["male", "female", "others"],
+            "operators": ["in", "nin"]
+        },
+        {
+            "key": "applicant.age",
+            "label": "Age",
+            "type": "number",
+            "operators": [">", ">=", "<", "<="]
+        },
+        {
+            "key": "applicant.current_address_ownership",
+            "label": "Current Address Ownership",
+            "type": "multi_select",
+            "options": ["rented", "owned"],
+            "operators": ["in", "nin"]
+        }
+    ],
+    "Business": [
+        {
+            "key": "business.business_type",
+            "label": "Business",
+            "type": "multi_select",
+            "operators": ["in", "nin"],
+                "options": ["proprietorship", "llp", "partnership", "private_limited", "limited", "individual"]
+        },
+        {
+            "key": "business.overall_vintage",
+            "label": "Overall Business Vintage",
+            "type": "number",
+            "operators": [">", ">=", "<", "<="],
+            "value_suffix": "months"
+        },
+        {
+            "key": "business.overall_vintage",
+            "label": "Overall Business Vintage",
+            "type": "number",
+            "operators": [">", ">=", "<", "<="],
+            "value_suffix": "months"
+        },
+        {
+            "key": "business.current_address_ownership",
+            "label": "Current Address Ownership",
+            "type": "multi_select",
+            "options": ["rented", "owned"],
+            "operators": ["in", "nin"]
+        }
+    ],
+    "Verification Matrix Fields": [
+        {
+            "key": "matrix_data.business_authenticity",
+            "label": "Business Authenticity",
+            "type": "multi_select",
+            "options": ["R", "Y", "G"],
+            "operators": ["in", "nin"]
+        },
+        {
+            "key": "matrix_data.business_authenticity.name_match",
+            "label": "Business Name Match",
+            "type": "multi_select",
+            "options": ["R", "Y", "G"],
+            "operators": ["in", "nin"]
+        },
+        {
+            "key": "matrix_data.business_authenticity.business_type_match",
+            "label": "Business Type Match",
+            "type": "multi_select",
+            "options": ["R", "Y", "G"],
+            "operators": ["in", "nin"]
+        },
+        {
+            "key": "matrix_data.business_authenticity.address_match",
+            "label": "Business Address Match",
+            "type": "multi_select",
+            "options": ["R", "Y", "G"],
+            "operators": ["in", "nin"]
+        },
+        {
+            "key": "matrix_data.business_authenticity.incorporation_year_match",
+            "label": "Business Incorporation Year Match",
+            "type": "multi_select",
+            "options": ["R", "Y", "G"],
+            "operators": ["in", "nin"]
+        }
+    ],
+    "Banking": [
+        {
+            "key": "{applicant_type}.banking-credits", 
+            "label": "Bank Credits",
+            "type": "number",
+            "operators": [">", ">=", "<", "<="],
+            "filters": [
+                {
+                    "key": "period",
+                    "label": "in last",
+                    "type": "period",
+                            "operators": [">", ">=", "<", "<="],
+                    "period_types": ["months", "years"]
+                },
+                {
+                    "key": "aggregation",
+                    "label": "Aggregation",
+                    "type": "select",
+                    "choices": ["sum", "average", "max", "min"]
+                }
+            ]
+        },
+        {
+            "key": "{applicant_type}.banking-debits",
+            "label": "Bank Debits",
+            "type": "number",
+            "operators": [">", ">=", "<", "<="],
+            "filters": [
+                {
+                    "key": "period",
+                    "label": "in last",
+                    "type": "period",
+                            "operators": [">", ">=", "<", "<="],
+                    "period_types": ["months", "years"]
+                },
+                {
+                    "key": "aggregation",
+                    "label": "Aggregation",
+                    "type": "select",
+                    "choices": ["sum", "average", "max", "min"]
+                }
+            ]
+        }
+    ]
+}

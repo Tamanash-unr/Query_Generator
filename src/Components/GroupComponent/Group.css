@@ -1,0 +1,9 @@
+.group{
+    width: 95%;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: rgb(106, 106, 203);
+    padding: 15px;
+    margin: 12px auto;
+    box-shadow: inset 4px 8px 12px rgb(61, 61, 93);
+}
