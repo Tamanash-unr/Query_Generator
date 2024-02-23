@@ -27,7 +27,7 @@
             "label": "Business",
             "type": "multi_select",
             "operators": ["in", "nin"],
-                "options": ["proprietorship", "llp", "partnership", "private_limited", "limited", "individual"]
+            "options": ["proprietorship", "llp", "partnership", "private_limited", "limited", "individual"]
         },
         {
             "key": "business.overall_vintage",

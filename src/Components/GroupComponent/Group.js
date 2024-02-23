@@ -6,6 +6,7 @@ import Rule from "../RuleComponent/Rule";
 function Group(props){
     const { updateFinalExpression, baseExpFormat } = GlobalData();
     const [groupCount, setGroupCount] = useState(0);
+    const [ruleCount, setRuleCount] = useState(0);
     const [groupObj, setGroupObj] = useState(baseExpFormat);
     let { updateParent, parentId, childId } = props;
 
@@ -27,11 +28,20 @@ function Group(props){
         setGroupObj(newExp);
     }
 
+    function getRules(){
+        let compArr = [];
+
+        for(let i=0; i<ruleCount ; i++){
+            compArr.push(<Rule key={`${i}.rule`}/>);
+        }
+
+        return compArr;
+    }
+
     function getGroups(){
         let compArr = [];
 
         for(let i=0; i<groupCount ; i++){
-
             compArr.push(<Group key={i} parentId={childId} childId={i} />);
         }
 
@@ -44,9 +54,11 @@ function Group(props){
                 <option value="and">AND</option>
                 <option value="or">OR</option>
             </select>
-            <button onClick={() => setGroupCount(groupCount + 1)}>Group</button>
-            <button>Rule</button>
-            <Rule />
+            <button onClick={() => setGroupCount(groupCount + 1)}>+ Group</button>
+            <button onClick={() => setRuleCount(ruleCount + 1)}>+ Rule</button>
+            {
+                getRules()
+            }
             {
                 getGroups()
             }

@@ -1,11 +1,16 @@
-import { useState } from "react";
+import "./Rule.css";
+import { useState, useEffect } from "react";
 import { GlobalData } from "../../App";
+import { Select, MultiSelect, Number } from "../TypeComponents";
 
 function Rule(){
     const [type, setType] = useState(null);
     const [selectedData, setSelectedData] = useState({});
     const { SampleSchema } = GlobalData();
     const schemaArr = Object.keys(SampleSchema);
+
+    useEffect(() => {
+    },[selectedData])
 
     function handleTypeChange(evt){
         const newType = evt.target.value;
@@ -17,14 +22,19 @@ function Rule(){
     }
 
     function getTypeComponent(){
+        let component = <></>;
+
         switch (type) {
             case "select":
+                component = <Select data={selectedData} key={selectedData.key}/>
                 break;
-            case "multi-select":
+            case "multi_select":
+                component = <MultiSelect data={selectedData} key={selectedData.key}/>
                 break;
             case "string":
                 break;
             case "number":
+                component = <Number data={selectedData} key={selectedData.key}/>
                 break;
             case "boolean":
                 break;
@@ -33,8 +43,10 @@ function Rule(){
             case "vintage":
                 break;
             default:
-                return <></>;
+                break;
         }
+        
+        return component;
     }
 
     return (
@@ -48,7 +60,12 @@ function Rule(){
                                 <optgroup label={item}>
                                 {
                                     SampleSchema[item].map((itemType)=>{
-                                        return <option value={itemType.type} onClick={() => handleTypeSelect(itemType)}>{itemType.label}</option>
+                                        return <option
+                                                    value={itemType.type}
+                                                    onClick={() => handleTypeSelect(itemType)}
+                                                >
+                                                    {itemType.label}
+                                                </option>
                                     })
                                 }
                                 </optgroup>
@@ -56,8 +73,9 @@ function Rule(){
                         })
                     }
                 </select>
-                <input type="text" placeholder="Sample"/>
-                <input type="text" placeholder="Sample"/>
+                {
+                    getTypeComponent()
+                }
             </div>
         </div>
     )

@@ -1,3 +1,26 @@
 .form-control{
     display: flex;
+    margin: 10px 0px;
 }
+
+.type{
+    margin: 0px 10px;
+}
+
+.type *{
+    margin-right: 10px;
+}
+
+.type input{
+    margin-right: 5px;
+}
+
+.no-spinners {
+    -moz-appearance: textfield;
+ }
+ 
+ .no-spinners::-webkit-outer-spin-button,
+ .no-spinners::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+ }

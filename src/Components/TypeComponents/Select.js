@@ -3,7 +3,6 @@ function Select(props){
 
     return (
         <div className="type">
-           
         </div>
     )
 }
